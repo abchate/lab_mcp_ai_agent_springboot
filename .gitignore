@@ -1,17 +1,8 @@
-# Compiled class file
 *.class
-
-# Log file
 *.log
 *.log.*
-
-# BlueJ files
 *.ctxt
-
-# Mobile Tools for Java (J2ME)
 .mtj.tmp/
-
-# Package Files #
 *.jar
 *.war
 *.nar
@@ -19,44 +10,24 @@
 *.zip
 *.tar.gz
 *.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
-
-# ==========================================
-# Spring Boot
-# ==========================================
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-
-# Spring Boot specific
 *.original
 spring-boot-*.log
-
-# ==========================================
-# Maven
-# ==========================================
 .mvn/
 mvnw
 mvnw.cmd
 .mvn/wrapper/maven-wrapper.jar
-
-# ==========================================
-# Gradle
-# ==========================================
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
 .gradletasknamecache
-
-# ==========================================
-# IntelliJ IDEA
-# ==========================================
 .idea/
 *.iws
 *.iml
@@ -64,10 +35,6 @@ build/
 out/
 .idea_modules/
 atlassian-ide-plugin.xml
-
-# ==========================================
-# Eclipse
-# ==========================================
 .classpath
 .project
 .settings/
@@ -80,17 +47,9 @@ tmp/
 local.properties
 .loadpath
 .recommenders
-
-# ==========================================
-# VSCode
-# ==========================================
 .vscode/
 *.code-workspace
 .history/
-
-# ==========================================
-# Node.js / npm
-# ==========================================
 node_modules/
 npm-debug.log*
 yarn-debug.log*
@@ -107,26 +66,35 @@ lerna-debug.log*
 .env.development.local
 .env.test.local
 .env.production.local
-
-# ==========================================
-# mcp-github-http-wrapper specific
-# ==========================================
 mcp-github-http-wrapper/node_modules/
 mcp-github-http-wrapper/package-lock.json
 mcp-github-http-wrapper/.env
 mcp-github-http-wrapper/dist/
 mcp-github-http-wrapper/build/
-
-# ==========================================
-# Docker
-# ==========================================
+agent/.gradle/
+agent/build/
+agent/.idea/
+agent/*.iml
+agent/*.iws
+agent/*.ipr
+agent/out/
+agent/.classpath
+agent/.project
+agent/.settings/
+agent/bin/
+agent/.springBeans
+agent/.sts4-cache
+agent/.apt_generated/
+agent/.factorypath
+agent/.nb-gradle/
+agent/nbproject/private/
+agent/nbbuild/
+agent/nbdist/
+agent/dist/
+agent/.vscode/
+agent/HELP.md
 *.dockerignore
 .docker/
-
-# ==========================================
-# OS Files
-# ==========================================
-# macOS
 .DS_Store
 .AppleDouble
 .LSOverride
@@ -144,8 +112,6 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
-
-# Windows
 Thumbs.db
 Thumbs.db:encryptable
 ehthumbs.db
@@ -159,18 +125,11 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.lnk
-
-# Linux
 *~
 .fuse_hidden*
 .directory
 .Trash-*
 .nfs*
-
-# ==========================================
-# Application specific
-# ==========================================
-# Configuration files with sensitive data
 application-local.properties
 application-local.yml
 application-dev.properties
@@ -181,22 +140,14 @@ application-dev.yml
 *.jks
 *.keystore
 *.truststore
-
-# Logs
 logs/
 *.log.*
 log/
-
-# Temporary files
 tmp/
 temp/
 *.tmp
 *.temp
 *.cache
-
-# ==========================================
-# Testing
-# ==========================================
 .coverage
 coverage/
 *.cover
@@ -204,10 +155,6 @@ coverage/
 .pytest_cache/
 .tox/
 htmlcov/
-
-# ==========================================
-# Other
-# ==========================================
 *.pid
 *.seed
 *.pid.lock
