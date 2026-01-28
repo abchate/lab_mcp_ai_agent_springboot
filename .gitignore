@@ -67,7 +67,6 @@ lerna-debug.log*
 .env.test.local
 .env.production.local
 mcp-github-http-wrapper/node_modules/
-mcp-github-http-wrapper/package-lock.json
 mcp-github-http-wrapper/.env
 mcp-github-http-wrapper/dist/
 mcp-github-http-wrapper/build/
