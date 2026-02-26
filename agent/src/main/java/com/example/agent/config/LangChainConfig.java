@@ -14,7 +14,6 @@ import java.time.Duration;
 import java.util.List;
 
 @Configuration
-@Profile("!ci")
 public class LangChainConfig {
 
 	@Bean
@@ -31,7 +30,6 @@ public class LangChainConfig {
 	}
 
 	@Bean
-	@Profile("!ci")
 	public BacklogAgent backlogAgent(ChatModel chatModel, GitHubMcpTools githubMcpTools) {
 		return AiServices.builder(BacklogAgent.class)
 				.chatModel(chatModel)
