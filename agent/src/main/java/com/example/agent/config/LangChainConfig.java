@@ -1,6 +1,7 @@
 package com.example.agent.config;
 
 import com.example.agent.agent.BacklogAgent;
+import com.example.agent.tools.GitHubMcpTools;
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.anthropic.AnthropicChatModel;
 import dev.langchain4j.service.AiServices;
@@ -45,6 +46,12 @@ public class LangChainConfig {
 	//            .timeout(Duration.ofSeconds(timeoutSeconds))
 	//            .build();
 	//  }
+
+	@Bean
+	@Profile("!ci")
+	public List<Object> toolBeans(GitHubMcpTools githubMcpTools) {
+		return List.of(githubMcpTools);
+	}
 
 	@Bean
 	@Profile("!ci")
