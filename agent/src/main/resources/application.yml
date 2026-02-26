@@ -2,14 +2,8 @@ github:
   owner: ${GITHUB_OWNER}
   repo: ${GITHUB_REPO}
 
-anthropic:
-  api-key: ${ANTHROPIC_API_KEY}
-  model: claude-opus-4-20250514
-  max-tokens: 800
-  timeout-seconds: 60
-
 openai:
-  api-key: demo
+  api-key: ${OPENAI_API_KEY}
   model: gpt-4o-mini
   timeout-seconds: 60
 
