@@ -5,6 +5,7 @@ github:
 anthropic:
   api-key: ${ANTHROPIC_API_KEY}
   model: claude-opus-4-20250514
+  max-tokens: 800
   timeout-seconds: 60
 
 openai:
@@ -15,3 +16,9 @@ openai:
 mcp:
   base-url: ${MCP_BASE_URL:http://localhost:3333}
   path: ${MCP_PATH:/mcp}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
