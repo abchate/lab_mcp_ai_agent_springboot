@@ -13,5 +13,5 @@ openai:
   timeout-seconds: 60
 
 mcp:
-  base-url: http://localhost:3333
-  path: /mcp
+  base-url: ${MCP_BASE_URL:http://localhost:3333}
+  path: ${MCP_PATH:/mcp}

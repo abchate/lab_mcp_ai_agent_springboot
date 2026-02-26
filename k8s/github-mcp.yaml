@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: github-mcp-server
+  namespace: lab-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: github-mcp-server
+  template:
+    metadata:
+      labels:
+        app: github-mcp-server
+    spec:
+      containers:
+        - name: github-mcp-server
+          image: github-mcp-server:dev
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: GITHUB_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: agent-secrets
+                  key: GITHUB_TOKEN
+          ports:
+            - containerPort: 3333
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: github-mcp-server
+  namespace: lab-agent
+spec:
+  selector:
+    app: github-mcp-server
+  ports:
+    - name: http
+      port: 3333
+      targetPort: 3333

@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-agent
+  namespace: lab-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ai-agent
+  template:
+    metadata:
+      labels:
+        app: ai-agent
+    spec:
+      containers:
+        - name: ai-agent
+          image: ai-agent:dev
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: ANTHROPIC_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: agent-secrets
+                  key: ANTHROPIC_API_KEY
+            - name: MCP_BASE_URL
+              value: "http://github-mcp-server:3333"
+            - name: MCP_PATH
+              value: "/mcp"
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-agent
+  namespace: lab-agent
+spec:
+  selector:
+    app: ai-agent
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
