@@ -22,6 +22,7 @@ repositories {
 dependencies {
 	// Spring
 	implementation "org.springframework.boot:spring-boot-starter-web"
+	implementation "org.springframework.boot:spring-boot-starter-actuator"
 	implementation "org.springframework:spring-webflux"
 
 	// LangChain4j BOM (pins everything to 1.10.0)

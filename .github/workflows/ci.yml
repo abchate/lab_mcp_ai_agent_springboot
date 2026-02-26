@@ -30,6 +30,54 @@ jobs:
         working-directory: agent
         run: docker build -t local/agent:ci .
 
+  kubernetes:
+    runs-on: ubuntu-latest
+    needs: build-test-docker
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Start Minikube
+        uses: medyagh/setup-minikube@master
+
+      - name: Verify cluster
+        run: kubectl get nodes
+
+      - name: Build Docker image inside Minikube
+        run: |
+          eval $(minikube -p minikube docker-env)
+          docker build -t ai-agent:ci .
+        working-directory: agent
+
+      - name: Deploy to Minikube
+        run: kubectl apply -f agent/src/main/k8s/ai-agent-deployment.yml
+
+      - name: Wait for pod ready
+        run: |
+          kubectl wait --for=condition=Ready pod -l app=ai-agent --timeout=180s
+          kubectl get pods
+          minikube service list
+          SERVICE_URL=$(minikube service ai-agent --url)
+          echo "${SERVICE_URL}/actuator/health"
+          echo "------------------opening the service------------------"
+          sleep 40
+
+      - name: Test service health endpoint
+        run: |
+          kubectl port-forward svc/ai-agent 8080:8080 &
+          sleep 10
+          curl -fsS http://127.0.0.1:8080/actuator/health
+
+      - name: Log Kubernetes pods
+        run: |
+          kubectl logs $(kubectl get pods -l app=ai-agent -o name)
+
+      - name: Log pods on failure
+        if: failure()
+        run: |
+          kubectl get pods -o wide
+          kubectl logs -l app=ai-agent --tail=200
+
   build-test-mcp-wrapper:
     runs-on: ubuntu-latest
     steps:
