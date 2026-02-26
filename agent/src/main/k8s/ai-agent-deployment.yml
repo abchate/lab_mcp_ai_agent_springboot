@@ -19,6 +19,10 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: "ci"
+            - name: GITHUB_OWNER
+              value: "ci-owner"
+            - name: GITHUB_REPO
+              value: "ci-repo"
           ports:
             - containerPort: 8080
           readinessProbe:
