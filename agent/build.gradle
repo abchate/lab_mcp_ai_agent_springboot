@@ -28,10 +28,9 @@ dependencies {
 	// LangChain4j BOM (pins everything to 1.10.0)
 	implementation platform("dev.langchain4j:langchain4j-bom:1.10.0")
 
-	// LangChain4j core + Anthropic
+	// LangChain4j core + OpenAI
 	implementation "dev.langchain4j:langchain4j"
-	implementation "dev.langchain4j:langchain4j-anthropic"
-	//implementation "dev.langchain4j:langchain4j-openai"
+	implementation "dev.langchain4j:langchain4j-open-ai"
 
 	// Optional: JDK HTTP client integration
 	implementation "dev.langchain4j:langchain4j-http-client-jdk"
