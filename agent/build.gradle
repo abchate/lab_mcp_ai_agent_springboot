@@ -20,14 +20,28 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'org.springframework:spring-webflux'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// Spring
+	implementation "org.springframework.boot:spring-boot-starter-web"
+	implementation "org.springframework:spring-webflux"
+
+	// LangChain4j BOM (pins everything to 1.10.0)
+	implementation platform("dev.langchain4j:langchain4j-bom:1.10.0")
+
+	// LangChain4j core + Anthropic
+	implementation "dev.langchain4j:langchain4j"
+	implementation "dev.langchain4j:langchain4j-anthropic"
+	//implementation "dev.langchain4j:langchain4j-openai"
+
+	// Optional: JDK HTTP client integration
+	implementation "dev.langchain4j:langchain4j-http-client-jdk"
+
+	// Testing
+	testImplementation "org.springframework.boot:spring-boot-starter-test"
+	testImplementation "org.mockito:mockito-core:5.12.0"
+	testImplementation "io.projectreactor:reactor-test"
+	testRuntimeOnly "org.junit.platform:junit-platform-launcher"
 }
 
-
-tasks.named('test') {
+test {
 	useJUnitPlatform()
 }
