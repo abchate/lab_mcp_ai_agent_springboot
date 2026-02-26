@@ -2,29 +2,33 @@ name: CI
 
 on:
   push:
-    branches: [ "**" ]
+    branches: [ "main", "master" ]
   pull_request:
-    branches: [ "main" ]
 
 jobs:
-  build-test-agent:
+  build-test-docker:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup JDK 21
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
           cache: gradle
 
-      - name: Grant execute permission
-        run: chmod +x agent/gradlew
+      - name: Grant execute permission for gradlew
+        working-directory: agent
+        run: chmod +x gradlew
 
       - name: Build & Test
         working-directory: agent
         run: ./gradlew --no-daemon clean test
+
+      - name: Docker Build (no push)
+        working-directory: agent
+        run: docker build -t local/agent:ci .
 
   build-test-mcp-wrapper:
     runs-on: ubuntu-latest
