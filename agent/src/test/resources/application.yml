@@ -5,3 +5,7 @@ spring:
 mcp:
   base-url: http://localhost:3333
   path: /mcp
+
+github:
+  owner: test-owner
+  repo: test-repo
